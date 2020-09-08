@@ -1,6 +1,7 @@
 # Project_structure
 
-工程目录结构规范（私人使用），目前包含cpp、python两种语言的工程目录结构
+- 工程目录结构规范（私人使用），目前包含cpp、python两种语言的工程目录结构
+- cpp_demo、python_demo分别为工程源目录名字
 
 [toc]
 
