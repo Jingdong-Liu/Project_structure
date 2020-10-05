@@ -6,7 +6,7 @@ cpp_demo文件夹为通用工程模板
 
 [toc]
 
-## C++工程
+## 一 C++工程
 
 一个良好结构的代码，一般会有以下几个部分：
 
@@ -19,9 +19,9 @@ cpp_demo文件夹为通用工程模板
 
 *开源库的作者应该充分考虑到使用者环境的多样性，开发者应该给使用者至少提供动态链接库的版本和静态链接的版本*，静态库和动态库的区别在于，静态库是不需要导出函数的，它直接被编译进生成的二进制文件中，而动态库需要导出函数，以便自己的工程能在dll中找到某函数的偏移地址。从编译选项的角度来说，动态库往往比静态库多一个宏，表明自己是个动态库。
 
-### cpp_demo——通用C++工程模板
+### 1. cpp_demo——通用C++工程模板
 
-#### 顶层目录结构
+#### 1.1 顶层目录结构
 
 ```txt
 project_name
@@ -62,7 +62,7 @@ project_name
 - **readme.md :** 存放工程说明文件。
 - **sample :** 存放示例代码。
 
-#### 源文件目录结构说明
+#### 1.2 源文件目录结构说明
 
 ```txt
 # example modules tree
@@ -92,7 +92,7 @@ project_name
 4. 每个子模块的根目录下存放该模块的主要功能逻辑代码，如 `module_1.cc`。另外，可按照功能再划分子目录进行源码组织，但不可以出现模块嵌套的情况。
 5. 若要包含内部头文件时，包含路径要从 `project_name` 开始路径要完整，如`#include "project_name/module1/dir_1/somthing.h"`，以防止头文件名称冲突的情况，同时遵循了[Google C++编码规范](https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents/)。
 
-#### 头文件目录结构说明
+#### 1.3 头文件目录结构说明
 
 ```txt
 # example include tree
@@ -115,7 +115,7 @@ include
 
 若要包含外部头文件时，包含路径同样要从 `project_name` 开始路径要完整，如`#include "project_name/module_2/module_2.h"`。
 
-#### 其他说明
+#### 1.4 其他说明
 
 1. 针对头文件的包含，顶层 `CMakeLists.txt` 只指定 `${CMAKE_SOURCE_DIR}\include` 和 `${CMAKE_SOURCE_DIR}`，以保证所有的包含规则都是从工程根目录开始包含。
 2. 添加 `include` 目录使得公共头文件和对内部文件可以分离开，使多个模块之间合作开发时项目内部结构更加清晰。
@@ -125,9 +125,9 @@ include
 
 
 
-## Python工程
+## 二 Python工程
 
-#### 深度学习工程目录模板
+#### 1. 深度学习工程目录模板
 
 > **[深度学习工程模板](https://github.com/SpikeKing/DL-Project-Template)**（DL Project Template），简化加载数据、构建网络、训练模型和预测样本的流程。
 
