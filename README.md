@@ -1,7 +1,8 @@
-# Project_structure
+# Code+README.md 模板
 
-- 工程目录结构规范（私人使用），目前包含cpp、python两种语言的工程目录结构
-- cpp_demo、python_demo分别为工程源目录名字
+工程目录结构规范（私人使用），目前包含cpp、python两种语言的工程目录结构。
+
+cpp_demo文件夹为通用工程模板
 
 [toc]
 
@@ -18,7 +19,9 @@
 
 *开源库的作者应该充分考虑到使用者环境的多样性，开发者应该给使用者至少提供动态链接库的版本和静态链接的版本*，静态库和动态库的区别在于，静态库是不需要导出函数的，它直接被编译进生成的二进制文件中，而动态库需要导出函数，以便自己的工程能在dll中找到某函数的偏移地址。从编译选项的角度来说，动态库往往比静态库多一个宏，表明自己是个动态库。
 
-### 顶层目录结构
+### cpp_demo——通用C++工程模板
+
+#### 顶层目录结构
 
 ```txt
 project_name
@@ -59,7 +62,7 @@ project_name
 - **readme.md :** 存放工程说明文件。
 - **sample :** 存放示例代码。
 
-### 源文件目录结构说明
+#### 源文件目录结构说明
 
 ```txt
 # example modules tree
@@ -89,7 +92,7 @@ project_name
 4. 每个子模块的根目录下存放该模块的主要功能逻辑代码，如 `module_1.cc`。另外，可按照功能再划分子目录进行源码组织，但不可以出现模块嵌套的情况。
 5. 若要包含内部头文件时，包含路径要从 `project_name` 开始路径要完整，如`#include "project_name/module1/dir_1/somthing.h"`，以防止头文件名称冲突的情况，同时遵循了[Google C++编码规范](https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents/)。
 
-### 头文件目录结构说明
+#### 头文件目录结构说明
 
 ```txt
 # example include tree
@@ -112,7 +115,7 @@ include
 
 若要包含外部头文件时，包含路径同样要从 `project_name` 开始路径要完整，如`#include "project_name/module_2/module_2.h"`。
 
-### 其他说明
+#### 其他说明
 
 1. 针对头文件的包含，顶层 `CMakeLists.txt` 只指定 `${CMAKE_SOURCE_DIR}\include` 和 `${CMAKE_SOURCE_DIR}`，以保证所有的包含规则都是从工程根目录开始包含。
 2. 添加 `include` 目录使得公共头文件和对内部文件可以分离开，使多个模块之间合作开发时项目内部结构更加清晰。
@@ -120,5 +123,52 @@ include
 
 
 
+
+
 ## Python工程
+
+#### 深度学习工程目录模板
+
+> **[深度学习工程模板](https://github.com/SpikeKing/DL-Project-Template)**（DL Project Template），简化加载数据、构建网络、训练模型和预测样本的流程。
+
+参考链接： [深度学习工程模板](https://juejin.im/post/6844903592764129288)
+
+```txt
+├── bases
+│   ├── data_loader_base.py             - 数据加载基类
+│   ├── infer_base.py                   - 预测样本（推断）基类
+│   ├── model_base.py                   - 网络结构（模型）基类
+│   ├── trainer_base.py                 - 训练模型基类
+├── configs                             - 配置文件夹
+│   └── simple_mnist_config.json
+├── data_loaders                        - 数据加载文件夹
+│   ├── __init__.py
+│   ├── simple_mnist_dl.py
+├── experiments                         - 实验数据文件夹
+│   └── simple_mnist                    - 实验名称
+│       ├── checkpoints                 - 存储的模型和参数
+│       │   └── simple_mnist.weights.10-0.24.hdf5
+│       ├── images                      - 图片
+│       │   └── model.png
+│       └── logs                        - 日志，如TensorBoard
+│           └── events.out.tfevents.1524034653.wang
+├── infers                              - 推断文件夹
+│   ├── __init__.py
+│   ├── simple_mnist_infer.py
+├── main_test.py                        - 预测样本入口
+├── main_train.py                       - 训练模型入口
+├── models                              - 网络结构文件夹
+│   ├── __init__.py
+│   ├── simple_mnist_model.py
+├── requirements.txt                    - 依赖库
+├── trainers                            - 训练模型文件夹
+│   ├── __init__.py
+│   ├── simple_mnist_trainer.py
+└── utils                               - 工具文件夹
+    ├── __init__.py
+    ├── config_utils.py                 - 配置工具类
+    ├── np_utils.py                     - NumPy工具类
+    ├── utils.py                        - 其他工具类
+
+```
 
